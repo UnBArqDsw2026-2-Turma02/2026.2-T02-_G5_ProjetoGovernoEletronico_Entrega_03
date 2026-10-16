@@ -1,31 +1,15 @@
-# RepositorioTemplate
+# Grupo 05 — Governo Eletrônico — Entrega 03
 
-Repositório que deve ser utilizado como template inicial pelos grupos da matéria de Arquitetura e Desenho de Software.
+Documentação da disciplina **FGA0208 — Arquitetura e Desenho de Software** sobre padrões de projeto GoF, considerando como objeto de estudo o Informa.BR.
 
-## Introdução
+- **Site:** https://unbarqdsw2026-2-turma02.github.io/2026.2-T02-_G5_ProjetoGovernoEletronico_Entrega_03/ (após habilitar o GitHub Pages)
+- **Conteúdo:** [`docs/`](docs/README.md)
+- **Template:** https://github.com/UnBArqDsw2026-2-Turma02/RepositorioTemplateEntrega3
 
-Este repositório traz um template de repo de documentação a ser seguido pelos grupos de arquitetura e desenho de software.
+## GitHub Pages
 
-## Tecnologia
+Configurar no GitHub: **Settings → Pages → Build and deployment → Deploy from a branch → `main` / `/docs` → Save**.
 
-A geração do site estático é realizada utilizando o [docsify](https://docsify.js.org/).
+O site é renderizado pelo Docsify 4 a partir de `docs/index.html` e arquivos Markdown. Não há geração estática nem pipeline de build. Para visualização local, executar `python3 -m http.server 8000 --directory docs` e abrir `http://localhost:8000/`.
 
-```shell
-"Docsify generates your documentation website on the fly. Unlike GitBook, it does not generate static html files. Instead, it smartly loads and parses your Markdown files and displays them as a website. To start using it, all you need to do is create an index.html and deploy it on GitHub Pages."
-```
-
-### Instalando o docsify
-
-Execute o comando:
-
-```shell
-npm i docsify-cli -g
-```
-
-### Executando localmente
-
-Para iniciar o site localmente, utilize o comando:
-
-```shell
-docsify serve ./docs
-```
+**Observação:** este pacote não cria a configuração de publicação nas Settings do GitHub; essa etapa é realizada no repositório de destino.
