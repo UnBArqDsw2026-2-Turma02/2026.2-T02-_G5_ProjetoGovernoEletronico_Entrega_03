@@ -1,6 +1,15 @@
-# RepositorioTemplate
+# Governo Eletronico
 
 Repositório que deve ser utilizado como template inicial pelos grupos da matéria de Arquitetura e Desenho de Software.
+
+## Alunos 
+
+| Nome do Membro |
+| --- | --- |
+| Isaac Lucas Souza Bezerra |
+| André João Cordeiro Gomes | 
+| Rivadalvio Joaquim da Silva Filho |
+| João Paulo Barros |
 
 ## Introdução
 
