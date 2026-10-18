@@ -14,6 +14,7 @@
 | 23/1029270 | Pedro Henrique Martins Silva |
 | 24/1012329 | Luiz Henrique Pallavicini |
 | 21/1031735 | Isaac Lucas Souza Bezerra |
+| 24/1011804 | Fábio Alessandro Santos Vieira |
 
 ## Sobre
 
@@ -24,7 +25,7 @@ O objeto de estudo continua sendo o **Informa.BR**, um portal relacionado ao ace
 | Subgrupo | Foco obrigatório | Relatório |
 | --- | --- | --- |
 | 01 | GoF Comportamental + IA generativa (definido) | [Acessar](Base/Relatórios/1.1.1.SubEquipe_01.md) |
-| 02 | GoF + IA generativa | [Acessar](Base/Relatórios/1.1.2.SubEquipe_02.md) |
+| 02 | GoF Estrutural + IA generativa | [Acessar](Base/Relatórios/1.1.2.SubEquipe_02.md) |
 | 03 | GoF + IA generativa | [Acessar](Base/Relatórios/1.1.3.SubEquipe_03.md) |
 
 **Organização:** a SubEquipe 01 definiu a categoria comportamental. As SubEquipes 02 e 03 ainda devem decidir entre as categorias criacional e estrutural, garantindo a cobertura das três categorias exigidas pelo template. Nenhum padrão específico foi escolhido oficialmente.

@@ -1,0 +1,149 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="EENmDT47b_CZ7LrKZ0AY">
+    <mxGraphModel dx="1297" dy="1283" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" mermaidData="{&#xa;  &quot;data&quot;: &quot;classDiagram\ndirection TB\nclass TelaBusca {\n &lt;&lt;Cliente&gt;&gt;\n +solicitarBusca(termo: Texto) SemRetorno\n +apresentar(resultado: ResultadoBusca) SemRetorno\n}\nclass FachadaBuscaPublica {\n &lt;&lt;Facade&gt;&gt;\n +buscar(termo: Texto) ResultadoBusca\n}\nclass ValidadorConsulta {\n &lt;&lt;Subsistema&gt;&gt;\n +validar(termo: Texto) ValidacaoConsulta\n}\nclass BuscaPedidosLAI {\n &lt;&lt;Subsistema&gt;&gt;\n +consultar(termo: Texto) ResultadoFonte\n}\nclass BuscaTransparencia {\n &lt;&lt;Subsistema&gt;&gt;\n +consultar(termo: Texto) ResultadoFonte\n}\nclass BuscaDadosAbertos {\n &lt;&lt;Subsistema&gt;&gt;\n +consultar(termo: Texto) ResultadoFonte\n}\nclass GeradorOrientacaoIA {\n &lt;&lt;Subsistema&gt;&gt;\n +gerar(termo: Texto) OrientacaoIA\n}\nTelaBusca ..&gt; FachadaBuscaPublica : usa\nFachadaBuscaPublica ..&gt; ValidadorConsulta : delega validacao\nFachadaBuscaPublica ..&gt; BuscaPedidosLAI : consulta\nFachadaBuscaPublica ..&gt; BuscaTransparencia : consulta\nFachadaBuscaPublica ..&gt; BuscaDadosAbertos : consulta\nFachadaBuscaPublica ..&gt; GeradorOrientacaoIA : solicita orientacao&quot;,&#xa;  &quot;config&quot;: null,&#xa;  &quot;version&quot;: &quot;12&quot;&#xa;}" id="3_xxxTYEqcoyqRpcLccT-1">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1">
+            <mxGeometry as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;b&gt;TelaBusca&lt;/b&gt;" mermaidId="n:TelaBusca" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FDF4FF;whiteSpace=wrap;spacingTop=24;fillColor=#FDF4FF;strokeColor=#E879F9;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;TelaBusca&lt;/b&gt;" id="3_xxxTYEqcoyqRpcLccT-2">
+          <mxCell parent="3_xxxTYEqcoyqRpcLccT-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FDF4FF;whiteSpace=wrap;spacingTop=24;fillColor=#FDF4FF;strokeColor=#E879F9;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" vertex="1">
+            <mxGeometry height="148" width="427" x="874" y="30" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-3" parent="3_xxxTYEqcoyqRpcLccT-2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;movable=0;resizable=0;rotatable=0;points=[];fontFamily=Arial;fontColor=#28253D;" value="«Cliente»" vertex="1">
+          <mxGeometry height="24" width="427" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-5" parent="3_xxxTYEqcoyqRpcLccT-2" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontColor=#28253D;" value="+solicitarBusca(termo: Texto) SemRetorno" vertex="1">
+          <mxGeometry height="28" width="427" y="78" as="geometry" />
+        </mxCell>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-6" parent="3_xxxTYEqcoyqRpcLccT-2" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontColor=#28253D;" value="+apresentar(resultado: ResultadoBusca) SemRetorno" vertex="1">
+          <mxGeometry height="28" width="427" y="108" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;FachadaBuscaPublica&lt;/b&gt;" mermaidId="n:FachadaBuscaPublica" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#F0FDFA;whiteSpace=wrap;spacingTop=24;fillColor=#F0FDFA;strokeColor=#2DD4BF;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;FachadaBuscaPublica&lt;/b&gt;" id="3_xxxTYEqcoyqRpcLccT-7">
+          <mxCell parent="3_xxxTYEqcoyqRpcLccT-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#F0FDFA;whiteSpace=wrap;spacingTop=24;fillColor=#F0FDFA;strokeColor=#2DD4BF;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" vertex="1">
+            <mxGeometry height="118" width="365" x="905" y="287" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-8" parent="3_xxxTYEqcoyqRpcLccT-7" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;movable=0;resizable=0;rotatable=0;points=[];fontFamily=Arial;fontColor=#28253D;" value="«Facade»" vertex="1">
+          <mxGeometry height="24" width="365" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-10" parent="3_xxxTYEqcoyqRpcLccT-7" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontColor=#28253D;" value="+buscar(termo: Texto) ResultadoBusca" vertex="1">
+          <mxGeometry height="28" width="365" y="78" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;ValidadorConsulta&lt;/b&gt;" mermaidId="n:ValidadorConsulta" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FFF7ED;whiteSpace=wrap;spacingTop=24;fillColor=#FFF7ED;strokeColor=#FB923C;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;ValidadorConsulta&lt;/b&gt;" id="3_xxxTYEqcoyqRpcLccT-11">
+          <mxCell parent="3_xxxTYEqcoyqRpcLccT-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FFF7ED;whiteSpace=wrap;spacingTop=24;fillColor=#FFF7ED;strokeColor=#FB923C;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" vertex="1">
+            <mxGeometry height="118" width="378" x="70" y="543" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-12" parent="3_xxxTYEqcoyqRpcLccT-11" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;movable=0;resizable=0;rotatable=0;points=[];fontFamily=Arial;fontColor=#28253D;" value="«Subsistema»" vertex="1">
+          <mxGeometry height="24" width="378" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-14" parent="3_xxxTYEqcoyqRpcLccT-11" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontColor=#28253D;" value="+validar(termo: Texto) ValidacaoConsulta" vertex="1">
+          <mxGeometry height="28" width="378" y="78" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;BuscaPedidosLAI&lt;/b&gt;" mermaidId="n:BuscaPedidosLAI" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#ECFEFF;whiteSpace=wrap;spacingTop=24;fillColor=#ECFEFF;strokeColor=#22D3EE;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;BuscaPedidosLAI&lt;/b&gt;" id="3_xxxTYEqcoyqRpcLccT-15">
+          <mxCell parent="3_xxxTYEqcoyqRpcLccT-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#ECFEFF;whiteSpace=wrap;spacingTop=24;fillColor=#ECFEFF;strokeColor=#22D3EE;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" vertex="1">
+            <mxGeometry height="118" width="370" x="488" y="543" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-16" parent="3_xxxTYEqcoyqRpcLccT-15" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;movable=0;resizable=0;rotatable=0;points=[];fontFamily=Arial;fontColor=#28253D;" value="«Subsistema»" vertex="1">
+          <mxGeometry height="24" width="370" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-18" parent="3_xxxTYEqcoyqRpcLccT-15" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontColor=#28253D;" value="+consultar(termo: Texto) ResultadoFonte" vertex="1">
+          <mxGeometry height="28" width="370" y="78" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;BuscaTransparencia&lt;/b&gt;" mermaidId="n:BuscaTransparencia" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#F0FDF4;whiteSpace=wrap;spacingTop=24;fillColor=#F0FDF4;strokeColor=#4ADE80;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;BuscaTransparencia&lt;/b&gt;" id="3_xxxTYEqcoyqRpcLccT-19">
+          <mxCell parent="3_xxxTYEqcoyqRpcLccT-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#F0FDF4;whiteSpace=wrap;spacingTop=24;fillColor=#F0FDF4;strokeColor=#4ADE80;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" vertex="1">
+            <mxGeometry height="118" width="380" x="898" y="543" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-20" parent="3_xxxTYEqcoyqRpcLccT-19" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;movable=0;resizable=0;rotatable=0;points=[];fontFamily=Arial;fontColor=#28253D;" value="«Subsistema»" vertex="1">
+          <mxGeometry height="24" width="380" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-22" parent="3_xxxTYEqcoyqRpcLccT-19" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontColor=#28253D;" value="+consultar(termo: Texto) ResultadoFonte" vertex="1">
+          <mxGeometry height="28" width="380" y="78" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;BuscaDadosAbertos&lt;/b&gt;" mermaidId="n:BuscaDadosAbertos" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#F5F3FF;whiteSpace=wrap;spacingTop=24;fillColor=#F5F3FF;strokeColor=#A78BFA;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;BuscaDadosAbertos&lt;/b&gt;" id="3_xxxTYEqcoyqRpcLccT-23">
+          <mxCell parent="3_xxxTYEqcoyqRpcLccT-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#F5F3FF;whiteSpace=wrap;spacingTop=24;fillColor=#F5F3FF;strokeColor=#A78BFA;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" vertex="1">
+            <mxGeometry height="118" width="380" x="1317" y="543" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-24" parent="3_xxxTYEqcoyqRpcLccT-23" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;movable=0;resizable=0;rotatable=0;points=[];fontFamily=Arial;fontColor=#28253D;" value="«Subsistema»" vertex="1">
+          <mxGeometry height="24" width="380" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-26" parent="3_xxxTYEqcoyqRpcLccT-23" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontColor=#28253D;" value="+consultar(termo: Texto) ResultadoFonte" vertex="1">
+          <mxGeometry height="28" width="380" y="78" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;b&gt;GeradorOrientacaoIA&lt;/b&gt;" mermaidId="n:GeradorOrientacaoIA" mermaidBaseStyle="swimlane;html=1;fontStyle=1;fontSize=16;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FEF2F2;whiteSpace=wrap;spacingTop=24;fillColor=#FEF2F2;strokeColor=#F87171;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" mermaidBaseValue="&lt;b&gt;GeradorOrientacaoIA&lt;/b&gt;" id="3_xxxTYEqcoyqRpcLccT-27">
+          <mxCell parent="3_xxxTYEqcoyqRpcLccT-1" style="swimlane;html=1;fontStyle=1;fontSize=14;align=center;verticalAlign=middle;horizontal=1;startSize=66;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=#FEF2F2;whiteSpace=wrap;spacingTop=24;fillColor=#FEF2F2;strokeColor=#F87171;fontColor=#28253D;fontFamily=Arial;strokeWidth=2;shadow=1;shadowColor=#000000;shadowOffsetX=4;shadowOffsetY=4;shadowBlur=0;shadowOpacity=6;" vertex="1">
+            <mxGeometry height="118" width="340" x="1737" y="543" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-28" parent="3_xxxTYEqcoyqRpcLccT-27" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;movable=0;resizable=0;rotatable=0;points=[];fontFamily=Arial;fontColor=#28253D;" value="«Subsistema»" vertex="1">
+          <mxGeometry height="24" width="340" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="3_xxxTYEqcoyqRpcLccT-30" parent="3_xxxTYEqcoyqRpcLccT-27" style="text;fontSize=14;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=12;spacingBottom=2;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontColor=#28253D;" value="+gerar(termo: Texto) OrientacaoIA" vertex="1">
+          <mxGeometry height="28" width="340" y="78" as="geometry" />
+        </mxCell>
+        <UserObject label="usa" mermaidId="e:TelaBusca-&gt;FachadaBuscaPublica#0" mermaidBaseStyle="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=16;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" mermaidBaseValue="usa" id="3_xxxTYEqcoyqRpcLccT-31">
+          <mxCell edge="1" parent="3_xxxTYEqcoyqRpcLccT-1" source="3_xxxTYEqcoyqRpcLccT-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=14;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" target="3_xxxTYEqcoyqRpcLccT-7">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="delega validacao" mermaidId="e:FachadaBuscaPublica-&gt;ValidadorConsulta#0" mermaidBaseStyle="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=16;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.18;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" mermaidBaseValue="delega validacao" id="3_xxxTYEqcoyqRpcLccT-32">
+          <mxCell edge="1" parent="3_xxxTYEqcoyqRpcLccT-1" source="3_xxxTYEqcoyqRpcLccT-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=14;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.18;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" target="3_xxxTYEqcoyqRpcLccT-11">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="972" y="442" />
+                <mxPoint x="259" y="442" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="consulta" mermaidId="e:FachadaBuscaPublica-&gt;BuscaPedidosLAI#0" mermaidBaseStyle="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=16;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.34;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" mermaidBaseValue="consulta" id="3_xxxTYEqcoyqRpcLccT-33">
+          <mxCell edge="1" parent="3_xxxTYEqcoyqRpcLccT-1" source="3_xxxTYEqcoyqRpcLccT-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=14;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.34;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" target="3_xxxTYEqcoyqRpcLccT-15">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1030" y="462" />
+                <mxPoint x="673" y="462" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="consulta" mermaidId="e:FachadaBuscaPublica-&gt;BuscaTransparencia#0" mermaidBaseStyle="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=16;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" mermaidBaseValue="consulta" id="3_xxxTYEqcoyqRpcLccT-34">
+          <mxCell edge="1" parent="3_xxxTYEqcoyqRpcLccT-1" source="3_xxxTYEqcoyqRpcLccT-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=14;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" target="3_xxxTYEqcoyqRpcLccT-19">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="consulta" mermaidId="e:FachadaBuscaPublica-&gt;BuscaDadosAbertos#0" mermaidBaseStyle="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=16;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.66;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" mermaidBaseValue="consulta" id="3_xxxTYEqcoyqRpcLccT-35">
+          <mxCell edge="1" parent="3_xxxTYEqcoyqRpcLccT-1" source="3_xxxTYEqcoyqRpcLccT-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=14;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.66;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" target="3_xxxTYEqcoyqRpcLccT-23">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1145" y="462" />
+                <mxPoint x="1507" y="462" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="solicita orientacao" mermaidId="e:FachadaBuscaPublica-&gt;GeradorOrientacaoIA#0" mermaidBaseStyle="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=16;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.81;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" mermaidBaseValue="solicita orientacao" id="3_xxxTYEqcoyqRpcLccT-36">
+          <mxCell edge="1" parent="3_xxxTYEqcoyqRpcLccT-1" source="3_xxxTYEqcoyqRpcLccT-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=0;dashed=1;startArrow=none;endArrow=classic;endSize=9;jumpStyle=arc;jumpSize=12;strokeColor=#000000;html=1;fontSize=14;labelBackgroundColor=#ffffff;fontFamily=Arial;fontColor=#28253D;exitX=0.81;exitY=1;entryX=0.5;entryY=0;strokeWidth=2;dashPattern=2 2;fixDash=1;" target="3_xxxTYEqcoyqRpcLccT-27">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1202" y="442" />
+                <mxPoint x="1906" y="442" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
