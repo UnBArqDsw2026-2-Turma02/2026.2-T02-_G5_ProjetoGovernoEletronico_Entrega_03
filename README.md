@@ -5,7 +5,7 @@ Repositório que deve ser utilizado como template inicial pelos grupos da matér
 ## Alunos 
 
 | Nome do Membro |
-| --- | --- |
+| --- |
 | Isaac Lucas Souza Bezerra |
 | André João Cordeiro Gomes | 
 | Rivadalvio Joaquim da Silva Filho |
