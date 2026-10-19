@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#071d41" name="theme-color"/>
+<meta content="Demonstração do padrão Observer aplicada ao ciclo de um pedido LAI." name="description"/>
+<title>Observer • Simulador de Pedido LAI</title>
+<link href="/style.css" rel="stylesheet"/>
+<script defer="" src="/app.js"></script>
+</head>
+<body>
+<div class="gov-band">
+<div class="gov-band-inner"><div class="gov-ident"><span class="flag"><i></i><i></i><i></i></span> <strong>Projeto acadêmico</strong> <span class="gov-divider"></span> Inspiração visual em serviços do Governo Federal</div><div class="gov-band-right">Arquitetura e Desenho de Software · FGA0208</div></div>
+</div>
+<div class="app-header">
+<div class="brand"><div class="brand-square">i<span>.</span></div><div><div class="brand-name">informa<span>.BR</span> <small>LAB</small></div><div class="brand-caption">Padrões de projeto · Grupo 05</div></div></div>
+<div class="header-meta"><button class="help-button" id="open-help" type="button"><span class="help-icon" aria-hidden="true">ⓘ</span><span id="help-button-text">Entenda o fluxo</span></button><span class="header-meta-label">GoF / Comportamental / Observer</span></div>
+</div>
+<div class="shell">
+
+<main class="main-content">
+<div class="content-inner">
+
+<div class="tabs-top"><div aria-label="Áreas do simulador" class="tab-buttons" role="tablist"><button aria-selected="true" class="tab-button active" data-tab="fluxo" role="tab" type="button">01 <span>Fluxo e atualizações</span></button><button aria-selected="false" class="tab-button" data-tab="classes" role="tab" type="button">02 <span>Classes e código</span></button></div></div>
+<section class="tab-content active" id="tab-fluxo" role="tabpanel">
+
+<div aria-label="Controle de execução e sequência de chamadas" class="workspace-grid"><section class="panel workflow"><div class="panel-head"><div><div class="section-kicker">CONTROLE DE EXECUÇÃO</div><h2>Etapas do pedido LAI</h2></div><button class="button-light" id="reset" type="button">↺ Reiniciar</button></div><div aria-label="Progresso das etapas" class="stage-line" id="stage-line"></div>
+<div id="create-section"><div class="step-intro"><span class="number-box">01</span><div><h3>Registrar solicitação</h3></div></div><form id="create-form"><label>Assunto do pedido<input id="field-assunto" maxlength="100" minlength="3" name="assunto" placeholder="Ex.: Contratos administrativos" required="" value="Dados sobre contratos públicos"/></label><label>Órgão solicitado<input id="field-orgao" maxlength="100" minlength="2" name="orgao" placeholder="Ex.: Órgão de teste" required="" value="Órgão federal de demonstração"/></label><label>Descrição do pedido<textarea id="field-descricao" maxlength="500" minlength="10" name="descricao" placeholder="Descreva o pedido fictício" required="" rows="3">Solicito dados demonstrativos sobre contratos administrativos.</textarea></label><button class="button-primary full" type="submit">Criar pedido</button></form></div>
+<div hidden="" id="advance-section"><div class="current-request"><span class="file-icon">▤</span><div><small>PEDIDO EM ACOMPANHAMENTO</small><strong id="request-subject">—</strong><span id="request-orgao">—</span></div><div class="status-tag" id="request-status">—</div></div><div class="form-heading">Próximas ações</div><div class="stage-actions" id="stage-actions"></div></div>
+</section>
+<section class="panel event-panel"><div class="panel-head"><div><div class="section-kicker">RASTRO DE EXECUÇÃO</div><h2>Chamadas entre classes</h2></div><button class="button-light" id="replay" type="button">▶ Reproduzir</button></div><div class="trace-legend" aria-label="Legenda das chamadas de método">
+  <span><b class="legend-symbol subject">●</b> Ação do sujeito</span>
+  <span><b class="legend-symbol observer">→</b> Atualização do observador</span>
+  <span><b class="legend-symbol query">↳</b> Consulta ao sujeito</span>
+</div>
+<div aria-live="polite" class="trace-list" id="trace-list"></div></section></div>
+<section class="outputs-section"><div class="output-heading"><div><div class="section-kicker">OBSERVADORES CONCRETOS</div><h2>Estado de cada observador</h2></div></div><div class="observer-cards" id="observer-cards"></div></section>
+</section>
+<section class="tab-content" id="tab-classes" role="tabpanel"><div class="classes-title"><div><div class="section-kicker">ESTRUTURA DO PROJETO</div><h2>Classes e código Python</h2><p>Selecione uma classe para consultar seu código e auditar seus objetos após cada etapa do pedido.</p></div><span class="source-tag">FONTE REAL • PYTHON</span></div>
+<div class="architecture"><div class="arch-title">MAPA DE COLABORAÇÃO <span>GOF OBSERVER</span></div><div class="arch-wrap"><div class="arch-column"><div class="arch-node abstract" data-class="Sujeito"><small>«abstract»</small><strong>Sujeito</strong><span>adicionar() · remover() · notificar()</span></div><div class="arch-connector">↑ herança</div><div class="arch-node concrete" data-class="SujeitoPedidoLAI"><small>CONCRETE SUBJECT</small><strong>SujeitoPedidoLAI</strong><span>criarPedido() · setEstado() · getEstado()</span></div></div><div class="arch-center"><div>notificar() <span>→</span> atualizar()</div><div class="arch-query">← getEstado() <span>consulta do estado</span></div></div><div class="arch-column"><div class="arch-node abstract" data-class="Observador"><small>«abstract»</small><strong>Observador</strong><span>atualizar()</span></div><div class="arch-connector">↑ herança</div><div class="arch-observers"><div class="arch-node concrete small" data-class="ObservadorBuscaLAI"><small>CONCRETE OBSERVER</small><strong>BuscaLAI</strong></div><div class="arch-node concrete small" data-class="ObservadorDadosAbertos"><small>CONCRETE OBSERVER</small><strong>Dados Abertos</strong></div><div class="arch-node concrete small" data-class="ObservadorPainelLAI"><small>CONCRETE OBSERVER</small><strong>Painel LAI</strong></div></div></div></div></div>
+<div class="code-workspace"><div class="class-menu panel"><div class="class-menu-header">CLASSES DO PROJETO <span id="class-count">9</span></div><div id="class-list"></div></div><div class="code-panel panel"><div class="code-panel-top"><div class="code-title"><span class="file-dot" aria-hidden="true"></span><div><div class="code-class-label">CLASSE ANALISADA</div><strong id="code-name">Carregando...</strong><small id="code-hierarchy">—</small></div></div><span class="code-language">PYTHON 3</span></div><div class="code-section"><div aria-label="Código-fonte da classe" class="code-lines" id="code-lines"></div></div></div><div class="inspector-panel panel"><div class="inspector-header"><div class="section-kicker">AUDITORIA DOS OBJETOS</div><h3>Estado após cada etapa</h3><p class="inspector-caption">Confira os valores atuais dos objetos Python depois do último passo executado.</p><div class="audit-step" id="audit-step" aria-live="polite">Etapa 0 de 5 · Pedido não criado</div></div><div id="inspector"></div><div class="audit-controls"><div class="audit-next-label" id="audit-control-label">PRÓXIMA ETAPA</div><button class="button-primary audit-next" id="audit-next" type="button">Criar pedido →</button><button class="button-secondary audit-reset" id="audit-reset" type="button" hidden>Reiniciar pedido</button><p id="audit-next-hint">O avanço atualizará os objetos e esta auditoria.</p></div></div></div>
+</section>
+<footer class="footer"><span>Grupo 05 · Arquitetura e Desenho de Software · FGA0208</span><span>Observer (GoF) · Padrão comportamental</span></footer>
+</div>
+</main>
+</div>
+
+<div class="modal-backdrop" hidden id="help-modal">
+<section aria-labelledby="help-title" aria-modal="true" class="help-dialog" role="dialog" tabindex="-1">
+  <div class="help-dialog-head">
+    <div><div class="section-kicker" id="help-kicker">GUIA DA SIMULAÇÃO</div><h2 id="help-title">Entenda o fluxo</h2></div>
+    <button aria-label="Fechar explicação" class="modal-close" id="close-help" type="button">×</button>
+  </div>
+  <div class="help-dialog-body" id="help-flow-content">
+    <p>Ao criar ou modificar o pedido, <code>SujeitoPedidoLAI</code> chama <code>notificar()</code>. Cada observador inscrito recebe <code>atualizar()</code>, consulta <code>getEstado()</code> e decide se precisa modificar seus resultados.</p>
+    <ol class="help-steps">
+      <li><strong>Registrar pedido</strong><span>Cria o pedido e notifica os observadores inscritos.</span></li>
+      <li><strong>Iniciar análise</strong><span>Altera o estado e provoca novas consultas.</span></li>
+      <li><strong>Registrar resposta</strong><span>Adiciona uma resposta e atualiza os indicadores do Painel LAI.</span></li>
+      <li><strong>Autorizar publicação</strong><span>Marca o pedido como autorizado, sem publicar os registros ainda.</span></li>
+      <li><strong>Publicar</strong><span>BuscaLAI cria seu índice, Dados Abertos exporta metadados e Painel LAI atualiza os contadores.</span></li>
+    </ol>
+    <div class="help-explanation">
+      <strong>Ativar e desativar observadores</strong>
+      <p>O botão <b>ATIVO / INATIVO</b> de cada classe controla sua inscrição em <code>Sujeito</code>. Quando está inativa, a classe não recebe <code>atualizar()</code> nas próximas etapas. Ao reativá-la, ela se inscreve novamente e, se houver um pedido, consulta o estado atual imediatamente para se sincronizar. Não são reproduzidas notificações antigas.</p>
+    </div>
+  </div>
+  <div class="help-dialog-body" id="help-classes-content" hidden>
+    <p>Esta tela apresenta as classes Python efetivamente utilizadas pela simulação e os valores atuais dos seus objetos.</p>
+    <ol class="help-steps">
+      <li><strong>Mapa de colaboração</strong><span>Mostra as relações entre <code>Sujeito</code>, <code>Observador</code> e suas implementações. Clique em qualquer classe para analisá-la.</span></li>
+      <li><strong>Classe analisada</strong><span>Exibe o código-fonte completo da classe selecionada, diretamente do arquivo correspondente. As classes do padrão ficam em <code>codigoFonte/</code> e a orquestração em <code>simulacao.py</code>.</span></li>
+      <li><strong>Auditoria dos objetos</strong><span>Mostra os valores atuais das instâncias depois da etapa executada. Classes abstratas não possuem instância própria.</span></li>
+      <li><strong>Avançar ou reiniciar</strong><span>Execute a próxima etapa sem sair desta tela. Quando o pedido for publicado, use <b>Reiniciar pedido</b> para começar novamente.</span></li>
+    </ol>
+    <div class="help-explanation"><strong>Como interpretar o fluxo</strong><p>O sujeito notifica os objetos inscritos. Cada observador concreto consulta o pedido e atualiza apenas a informação sob sua responsabilidade. A auditoria mostra o resultado após cada ação.</p></div>
+  </div>
+</section>
+</div>
+<div aria-live="assertive" class="toast" id="toast" role="alert"></div>
+</body>
+</html>
