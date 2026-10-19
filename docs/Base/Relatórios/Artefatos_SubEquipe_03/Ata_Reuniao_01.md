@@ -2,8 +2,8 @@
 
 **Entrega:** Módulo Padrões de Projeto — Entrega 03
 **Data:** 18/10/2026
-**Horário:** (a preencher)
-**Local/Plataforma:** (a preencher)
+**Horário:** 18h00 às 01h00 (madrugada de 19/10/2026)
+**Local/Plataforma:** Google Meet — com decisões complementares registradas no grupo do WhatsApp da subequipe
 **Gravação:** (link a preencher)
 
 ## Participantes
@@ -34,6 +34,7 @@
 - **Divergência:** parte do grupo defendia o Abstract Factory por parecer o mais aderente ao projeto; após a análise das intenções de cada padrão (criar um produto versus criar uma família de produtos), o grupo convergiu.
 - **Consenso:** Factory Method — a hierarquia `Resposta` já existia e cada subtipo tem regras próprias de criação; seria o caso clássico do padrão, com menos complexidade.
 - **Consenso:** a escolha da fábrica concreta fica em um único ponto do cliente (mapa `Decisao → FabricaResposta`), ligada aos gateways "Admissível?" e "Informação pública?" do BPMN da Entrega 02.
+- **Decisões complementares:** parte dos alinhamentos foi registrada de forma assíncrona no grupo do WhatsApp da subequipe, ao longo do período da entrega.
 
 ## Encaminhamentos
 
@@ -46,3 +47,10 @@
 
 - Ata versionada neste arquivo.
 - Gravação: (link a preencher)
+
+## Versionamento
+
+| Versão | Data | Descrição | Autor(es) |
+| --- | --- | --- | --- |
+| v0.1 | 19/10/2026 | Criação da ata: participantes, pauta, decisões, divergências e encaminhamentos | SubEquipe 03 (Isaac Lucas, André João, João Paulo Barros e Rivadalvio Joaquim) |
+| v1.0 | 19/10/2026 | Complemento: horário, plataforma da reunião e decisões complementares registradas no WhatsApp | SubEquipe 03 |
