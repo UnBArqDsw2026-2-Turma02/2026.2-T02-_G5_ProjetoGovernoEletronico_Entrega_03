@@ -5,7 +5,7 @@
   - [1. Visão geral e critérios](Base/1.PadroesDeProjeto.md)
   - **1.1 Relatórios**
     - [1.1.1 SubEquipe 01 — GoFs Comportamentais](Base/Relatórios/1.1.1.SubEquipe_01.md)
-    - [1.1.2 SubEquipe 02 — Categoria a definir](Base/Relatórios/1.1.2.SubEquipe_02.md)
-    - [1.1.3 SubEquipe 03 — GoFs Criacionais](Base/Relatórios/1.1.3.SubEquipe_03.md)
+    - [1.1.2 SubEquipe 02 — GoFs Estruturais](Base/Relatórios/1.1.2.SubEquipe_02.md)
+    - [1.1.3 SubEquipe 03 — Categoria a definir](Base/Relatórios/1.1.3.SubEquipe_03.md)
   - [1.2 Participações](Base/1.2.ParticipacoesPadroesDeProjeto.md)
   - [1.3 Iniciativas extras](Base/1.3.IniciativasExtras.md)
