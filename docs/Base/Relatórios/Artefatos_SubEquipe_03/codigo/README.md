@@ -36,4 +36,4 @@ Todos os cenários passaram ✔
 | `src/fabricas.ts` | *Creator* + *ConcreteCreator* | `FabricaResposta` (abstrata): `emitirResposta()` define o processo e `criarResposta()` é o factory method; e as três fábricas concretas |
 | `src/main.ts` | Cliente (demonstração) | Executa os 4 cenários e valida com `asserts` |
 
-Relatório completo: [`1.1.3.SubEquipe_03.md`](https://unbarqdsw2026-2-turma02.github.io/2026.2-T02-_G5_ProjetoGovernoEletronico_Entrega_03/#/Base/Relat%C3%B3rios/1.1.3.SubEquipe_03)
+Relatório completo: [`1.1.3.SubEquipe_03.md`](Base/Relatórios/1.1.3.SubEquipe_03.md)
