@@ -4,7 +4,7 @@
 **Data:** 18/10/2026
 **Horário:** 18h00 às 01h00 (madrugada de 19/10/2026)
 **Local/Plataforma:** Google Meet — com decisões complementares registradas no grupo do WhatsApp da subequipe
-**Gravação:** (link a preencher)
+**Gravação:** [reunião de alinhamento (Google Drive)](https://drive.google.com/file/d/1Y_m07Uw53uVW7RrpYgbPP43TfcPGDnzR/view?usp=sharing)
 
 ## Participantes
 
@@ -46,7 +46,7 @@
 ## Comprobatórios
 
 - Ata versionada neste arquivo.
-- Gravação: (link a preencher)
+- Gravação: [reunião de alinhamento (Google Drive)](https://drive.google.com/file/d/1Y_m07Uw53uVW7RrpYgbPP43TfcPGDnzR/view?usp=sharing)
 
 ## Versionamento
 
@@ -54,3 +54,4 @@
 | --- | --- | --- | --- |
 | v0.1 | 19/10/2026 | Criação da ata: participantes, pauta, decisões, divergências e encaminhamentos | SubEquipe 03 (Isaac Lucas, André João, João Paulo Barros e Rivadalvio Joaquim) |
 | v1.0 | 19/10/2026 | Complemento: horário, plataforma da reunião e decisões complementares registradas no WhatsApp | SubEquipe 03 |
+| v1.1 | 19/10/2026 | Inclusão do link da gravação da reunião | SubEquipe 03 |
