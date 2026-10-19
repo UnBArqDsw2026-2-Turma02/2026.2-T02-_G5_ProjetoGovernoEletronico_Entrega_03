@@ -135,7 +135,7 @@ class MotorSimulacao:
                 "codigo": inspect.getsource(cls),
                 "arquivo": str(Path(inspect.getfile(cls)).resolve().relative_to(Path(__file__).resolve().parent)),
             }
-            for cls in CLASSES
+            for cls in (*CLASSES, MotorSimulacao)
         }
 
     def _estado(self) -> dict:
