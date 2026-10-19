@@ -1,9 +1,11 @@
 @startuml GoF_Criacional_FactoryMethod_V01
 ' =============================================================
 ' Projeto Informa.BR | Grupo 05 | FGA0208
-' Padrões de Projeto GoF — Criacional: FACTORY METHOD
-' Aplicado à hierarquia "Resposta" do Diagrama de Classes (Entrega 02)
-' Versão 1.0 — SubEquipe 03
+' Padroes de Projeto GoF — Criacional: FACTORY METHOD
+' Aplicado a hierarquia Resposta do Diagrama de Classes (Entrega 02)
+' Versao 1.0 (revisada) — SubEquipe 03
+' Revisao: nomes sem acento/espaço; composicao PedidoAcesso-Resposta;
+' DadosResposta e StatusManifestacao modelados; rotulos ajustados.
 ' =============================================================
 
 title GoF Criacional — Factory Method aplicado à emissão de Respostas LAI | Informa.BR | G5 | SubEquipe 03 | v1.0
@@ -30,13 +32,13 @@ hide empty members
 ' CLIENTE
 ' ==========================================================
 package "Cliente" {
-  class "Agente Público" as AgentePublico {
+  class AgentePublico {
     - matricula : String
     - cargo : String
     + elaborarResposta(p : PedidoAcesso, f : FabricaResposta, d : DadosResposta) : Resposta
   }
 
-  class "Pedido de Acesso" as PedidoAcesso {
+  class PedidoAcesso {
     - protocolo : String
     - status : StatusManifestacao
     + vincularResposta(r : Resposta) : void
@@ -47,18 +49,18 @@ package "Cliente" {
 ' CREATOR + CONCRETE CREATORS
 ' ==========================================================
 package "Criadores (Creator)" {
-  abstract class "FabricaResposta" as FabricaResposta <<Creator>> {
+  abstract class FabricaResposta <<Creator>> {
     + emitirResposta(p : PedidoAcesso, a : AgentePublico, d : DadosResposta) : Resposta
     # {abstract} criarResposta(d : DadosResposta, a : AgentePublico) : Resposta
   }
 
-  class "FabricaRespostaDeferida" as FabDef <<ConcreteCreator>> {
+  class FabricaRespostaDeferida <<ConcreteCreator>> {
     # criarResposta(d : DadosResposta, a : AgentePublico) : Resposta
   }
-  class "FabricaRespostaParcial" as FabPar <<ConcreteCreator>> {
+  class FabricaRespostaParcial <<ConcreteCreator>> {
     # criarResposta(d : DadosResposta, a : AgentePublico) : Resposta
   }
-  class "FabricaRespostaIndeferida" as FabInd <<ConcreteCreator>> {
+  class FabricaRespostaIndeferida <<ConcreteCreator>> {
     # criarResposta(d : DadosResposta, a : AgentePublico) : Resposta
   }
 }
@@ -67,28 +69,29 @@ package "Criadores (Creator)" {
 ' PRODUCT + CONCRETE PRODUCTS (mesma hierarquia da Entrega 02)
 ' ==========================================================
 package "Produtos (Product)" {
-  abstract class "Resposta" as Resposta <<Product>> {
+  abstract class Resposta <<Product>> {
     - dataResposta : Date
     - texto : String
     - agenteResponsavel : String
     + publicar() : void
     + {abstract} cabeRecurso() : Boolean
+    + {abstract} tipo : String
   }
 
-  class "Resposta Deferida" as RespDef <<ConcreteProduct>> {
+  class RespostaDeferida <<ConcreteProduct>> {
     - linkAcesso : String
     - formatoArquivo : String
     + disponibilizarDados() : void
   }
 
-  class "Resposta Parcialmente Deferida" as RespPar <<ConcreteProduct>> {
+  class RespostaParcialmenteDeferida <<ConcreteProduct>> {
     - partesOcultadas : String
     - justificativaRestricao : String
     - enquadramentoLGPD : String
     + indicarPrazoRecursal() : String
   }
 
-  class "Resposta Indeferida" as RespInd <<ConcreteProduct>> {
+  class RespostaIndeferida <<ConcreteProduct>> {
     - motivoNegativa : String
     - dispositivoLegalLAI : String
     + indicarAutoridadeRecursal() : String
@@ -96,24 +99,55 @@ package "Produtos (Product)" {
 }
 
 ' ==========================================================
+' APOIO: DADOS E STATUS
+' ==========================================================
+package "Apoio" {
+  class DadosResposta {
+    - texto : String
+    - linkAcesso : String
+    - formatoArquivo : String
+    - partesOcultadas : String
+    - justificativaRestricao : String
+    - enquadramentoLGPD : String
+    - motivoNegativa : String
+    - dispositivoLegalLAI : String
+    - autoridadeRecursal : String
+  }
+
+  class StatusManifestacao <<enumeration>> {
+    EM_ELABORACAO
+    PROTOCOLADO
+    EM_ANALISE
+    AGUARDANDO_COMPLEMENTACAO
+    RESPONDIDO
+    EM_RECURSO_1
+    EM_RECURSO_2
+    ENCERRADO
+    CANCELADO
+  }
+}
+
+' ==========================================================
 ' RELACIONAMENTOS
 ' ==========================================================
-FabricaResposta <|-- FabDef
-FabricaResposta <|-- FabPar
-FabricaResposta <|-- FabInd
+FabricaResposta <|-- FabricaRespostaDeferida
+FabricaResposta <|-- FabricaRespostaParcial
+FabricaResposta <|-- FabricaRespostaIndeferida
 
-Resposta <|-- RespDef
-Resposta <|-- RespPar
-Resposta <|-- RespInd
+Resposta <|-- RespostaDeferida
+Resposta <|-- RespostaParcialmenteDeferida
+Resposta <|-- RespostaIndeferida
 
-FabDef ..> RespDef : <<create>>
-FabPar ..> RespPar : <<create>>
-FabInd ..> RespInd : <<create>>
+FabricaRespostaDeferida ..> RespostaDeferida : <<create>>
+FabricaRespostaParcial ..> RespostaParcialmenteDeferida : <<create>>
+FabricaRespostaIndeferida ..> RespostaIndeferida : <<create>>
 
-FabricaResposta ..> Resposta : produz >
-AgentePublico --> FabricaResposta : usa >
-AgentePublico ..> PedidoAcesso : responde >
-PedidoAcesso "1" --> "0..1" Resposta : origina >
+FabricaResposta ..> Resposta : produz
+FabricaResposta ..> DadosResposta : utiliza
+AgentePublico --> FabricaResposta : usa
+AgentePublico ..> PedidoAcesso : responde
+PedidoAcesso "1" *-- "0..1" Resposta : origina
+PedidoAcesso "1" --> "1" StatusManifestacao : possui
 
 ' ==========================================================
 ' NOTAS
@@ -127,14 +161,14 @@ note right of FabricaResposta
     return r
 end note
 
-note bottom of FabPar
+note bottom of FabricaRespostaParcial
   Valida as regras de privacidade
   antes de instanciar o produto:
   partes ocultadas + base legal
   (LAI art. 7º §2º e art. 31; LGPD).
 end note
 
-note bottom of FabInd
+note bottom of FabricaRespostaIndeferida
   Exige o dispositivo legal da
   negativa (LAI art. 11 §1º, II)
   e informa o prazo recursal

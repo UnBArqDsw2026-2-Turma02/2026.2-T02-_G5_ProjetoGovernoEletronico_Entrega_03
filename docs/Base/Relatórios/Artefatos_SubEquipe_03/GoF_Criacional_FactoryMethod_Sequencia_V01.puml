@@ -1,6 +1,6 @@
 @startuml GoF_Criacional_FactoryMethod_Sequencia_V01
 ' Projeto Informa.BR | Grupo 05 | FGA0208 — SubEquipe 03
-' Comportamento do Factory Method em tempo de execução (cenário: resposta parcialmente deferida)
+' Comportamento do Factory Method em tempo de execucao (resposta parcialmente deferida)
 
 title Factory Method em execução — Emissão de Resposta Parcialmente Deferida | SubEquipe 03 | v1.0
 
@@ -15,7 +15,7 @@ skinparam participantBackgroundColor #FFFFFF
 skinparam noteBackgroundColor #FEF9E7
 skinparam noteBorderColor #D4AC0D
 
-actor "Agente Público" as AG
+actor "AgentePublico" as AG
 participant ":FabricaRespostaParcial" as F
 participant ":PedidoAcesso" as P
 
