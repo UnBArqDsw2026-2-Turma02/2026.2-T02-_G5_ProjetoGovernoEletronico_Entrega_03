@@ -18,5 +18,5 @@ Nesta etapa, o objetivo é avaliar e demonstrar **decisões de design** com padr
 | Subgrupo | Especialidade |
 | --- | --- |
 | SubEquipe 01 | Padrões comportamentais |
-| SubEquipe 02 | A definir: criacionais ou estruturais |
-| SubEquipe 03 | A definir: criacionais ou estruturais |
+| SubEquipe 02 | Padrões estruturais |
+| SubEquipe 03 | Padrões criacionais |

@@ -1,0 +1,14 @@
+{
+  "name": "informabr-gof-factory-method",
+  "version": "1.0.0",
+  "private": true,
+  "description": "G5 Governo Eletrônico — SubEquipe 03 — GoF Criacional: Factory Method (emissão de Respostas LAI)",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/main.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.6.3"
+  }
+}

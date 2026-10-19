@@ -1,0 +1,49 @@
+@startuml GoF_Criacional_FactoryMethod_Sequencia_V01
+' Projeto Informa.BR | Grupo 05 | FGA0208 — SubEquipe 03
+' Comportamento do Factory Method em tempo de execucao (resposta parcialmente deferida)
+
+title Factory Method em execução — Emissão de Resposta Parcialmente Deferida | SubEquipe 03 | v1.0
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam sequenceArrowColor #2C3E50
+skinparam sequenceLifeLineBorderColor #7F8C8D
+skinparam participantBorderColor #2C3E50
+skinparam participantBackgroundColor #FFFFFF
+skinparam noteBackgroundColor #FEF9E7
+skinparam noteBorderColor #D4AC0D
+
+actor "AgentePublico" as AG
+participant ":FabricaRespostaParcial" as F
+participant ":PedidoAcesso" as P
+
+note over AG
+  Decisão da análise (BPMN — raia Órgão Público):
+  Admissível? = Sim | Informação pública? = Em parte
+end note
+
+AG -> F : emitirResposta(pedido, agente, dados)
+activate F
+F -> F : criarResposta(dados, agente)
+activate F
+alt dados de privacidade incompletos
+  F --> AG : erro: "partes ocultadas e base legal são obrigatórias"
+else dados válidos
+  create participant ":RespostaParcialmenteDeferida" as R
+  F -> R : <<create>>
+  deactivate F
+  F -> P : vincularResposta(resposta)
+  activate P
+  P -> P : status = RESPONDIDO
+  deactivate P
+  F -> R : publicar()
+  F --> AG : resposta : Resposta
+end
+deactivate F
+
+AG -> R : indicarPrazoRecursal()
+R --> AG : "10 dias (LAI art. 15)"
+
+@enduml
