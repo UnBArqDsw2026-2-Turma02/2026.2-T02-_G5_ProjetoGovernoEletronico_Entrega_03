@@ -1,15 +1,20 @@
-# Governo Eletronico
+# Grupo 05 | Governo Eletrônico
 
 **Código da Disciplina**: FGA0208<br>
 **Número do Grupo**: 05<br>
 **Entrega**: 03<br>
-## Alunos 
+
+Repositório da **Entrega 03** da disciplina **Arquitetura e Desenho de Software (FGA0208)**. O projeto aborda a aplicação de **Padrões de Projeto** em um sistema de governo eletrônico inspirado no portal Informa.BR e na Lei de Acesso à Informação.
+
+A documentação do projeto está disponível no [GitPages](https://unbarqdsw2026-2-turma02.github.io/2026.2-T02-_G5_ProjetoGovernoEletronico_Entrega_03/).
+
+## Alunos
 
 | Matrícula | Aluno |
 | --- | --- |
-| --- | Isaac Lucas Souza Bezerra |
-| --- | André João Cordeiro Gomes | 
-| --- | Rivadalvio Joaquim da Silva Filho |
+| | Isaac Lucas Souza Bezerra |
+| | André João Cordeiro Gomes |
+| | Rivadalvio Joaquim da Silva Filho |
 | 202023805 | João Paulo Barros |
 
 ## Sobre
@@ -39,7 +44,7 @@ Cada padrão é registrado com:
 
 ### GoF Criacional: Factory Method (SubEquipe 03)
 
-![Factory Method — Diagrama de Classes](Base/Relatórios/ExtrasSubEquipe_03/GoF_Criacional_FactoryMethod_V01.png)
+![Factory Method — Diagrama de Classes](docs/Base/Relatórios/Artefatos_SubEquipe_03/GoF_Criacional_FactoryMethod_V01.png)
 
 O padrão foi aplicado à hierarquia `Resposta` do Diagrama de Classes da Entrega 02:
 
@@ -47,12 +52,12 @@ O padrão foi aplicado à hierarquia `Resposta` do Diagrama de Classes da Entreg
 - O passo que muda, o *factory method* `criarResposta()`, fica em cada fábrica concreta.
 - Cada fábrica valida as próprias regras da LAI e da LGPD. Exemplo: uma resposta parcialmente deferida só é criada se trouxer a parte ocultada e a base legal.
 
-![Factory Method — Diagrama de Sequência](Base/Relatórios/ExtrasSubEquipe_03/GoF_Criacional_FactoryMethod_Sequencia_V01.png)
+![Factory Method — Diagrama de Sequência](docs/Base/Relatórios/Artefatos_SubEquipe_03/GoF_Criacional_FactoryMethod_Sequencia_V01.png)
 
 **Ficha Técnica — Factory Method:**
 * **Autores:** SubEquipe 03 — Isaac Lucas, André João, Rivadalvio Joaquim e João Paulo Barros.
-* **Fontes editáveis (PlantUML):** [Diagrama de Classes](Base/Relatórios/ExtrasSubEquipe_03/GoF_Criacional_FactoryMethod_V01.puml) · [Diagrama de Sequência](Base/Relatórios/ExtrasSubEquipe_03/GoF_Criacional_FactoryMethod_Sequencia_V01.puml)
-* **Código:** [`codigo/`](https://github.com/UnBArqDsw2026-2-Turma02/2026.2-T02-_G5_ProjetoGovernoEletronico_Entrega_03/tree/main/codigo) (TypeScript) <!-- TODO: conferir o nome do repositório e o caminho da pasta. -->
+* **Fontes editáveis (PlantUML):** [Diagrama de Classes](docs/Base/Relatórios/Artefatos_SubEquipe_03/GoF_Criacional_FactoryMethod_V01.puml) · [Diagrama de Sequência](docs/Base/Relatórios/Artefatos_SubEquipe_03/GoF_Criacional_FactoryMethod_Sequencia_V01.puml)
+* **Código:** [`codigo/subequipe-03/`](codigo/subequipe-03/) (TypeScript)
 
 ---
 
@@ -65,7 +70,7 @@ O padrão foi aplicado à hierarquia `Resposta` do Diagrama de Classes da Entreg
 Os padrões têm implementação executável. Para rodar a demonstração do **Factory Method** (SubEquipe 03), é preciso ter o **Node.js 18 ou superior**:
 
 ```bash
-cd codigo
+cd codigo/subequipe-03
 npm install
 npm start
 ```
@@ -105,8 +110,9 @@ Todos os cenários passaram ✔
 - [Lei de Acesso à Informação — Lei 12.527/2011](https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm)
 - [Lei Geral de Proteção de Dados — Lei 13.709/2018](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm)
 
-#### Histórico de versões 
+#### Histórico de versões
 
-| Versão |    Data    |        Descrição         |    Autor(es)    |
-| :----: | :--------: | :----------------------: | :-------------: | 
-|  1.0   | 18/10/2026 |   Criação do documento   | João Paulo Barros |  
+| Versão | Data | Descrição | Autor(es) |
+| :----: | :--: | :-------: | :-------: |
+| 1.0 | 18/10/2026 | Criação do documento | João Paulo Barros |
+| 1.1 | 19/10/2026 | Ajuste dos links dos artefatos e merge com a main | SubEquipe 03 |
