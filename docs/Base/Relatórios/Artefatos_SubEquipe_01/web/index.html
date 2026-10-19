@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informa.BR | Simulador de Recursos da LAI</title>
+  <style>
+    :root{color-scheme:light;--ink:#172b4d;--muted:#62718a;--line:#dce4ee;--paper:#f4f7fb;--blue:#175cd3;--navy:#102a56;--teal:#0f766e;--gold:#a15c07;--red:#b42318}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+    header{background:linear-gradient(120deg,#102a56,#175cd3);color:white;padding:30px 22px 36px}header .wrap,main{max-width:1120px;margin:0 auto} .eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:800;opacity:.8}h1{font-size:clamp(25px,4vw,36px);line-height:1.15;margin:9px 0}header p{max-width:700px;color:#dce8ff;margin:0}
+    main{padding:22px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px;align-items:start}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 4px 18px #18345c0a}.card h2{font-size:18px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 18px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label,.field-title{font-size:13px;font-weight:700;color:#344563}input[type=text],select{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;background:white;color:var(--ink);font:inherit;min-width:0}input:focus,select:focus{outline:3px solid #dbeafe;border-color:#6095ef}.toggle{display:flex;gap:10px;align-items:flex-start;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:11px;font-size:13px;font-weight:600}.toggle input{margin-top:4px;accent-color:var(--blue)}.section-label{grid-column:1/-1;margin:5px 0 -4px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:800}.actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}button{border:0;border-radius:9px;padding:11px 16px;font:700 14px system-ui;cursor:pointer}button.primary{background:var(--blue);color:white}button.secondary{background:#eef2f7;color:#344563}button:hover{filter:brightness(.97)}button:disabled{opacity:.6;cursor:wait}
+    .result-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.pill{border-radius:99px;padding:5px 10px;font-size:11px;font-weight:800;background:#eef2f7;color:#344563;white-space:nowrap}.pill.success{background:#dcfae6;color:#067647}.pill.warning{background:#fef0c7;color:#93370d}.pill.danger{background:#fee4e2;color:#b42318}.summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}.metric{padding:12px;background:#f8fafc;border:1px solid var(--line);border-radius:10px;min-width:0}.metric small{display:block;color:var(--muted);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}.metric strong{display:block;font-size:14px;margin-top:4px;overflow-wrap:anywhere}.log{margin:0;background:#0b1730;color:#e3edff;border-radius:11px;padding:16px;white-space:pre-wrap;overflow-wrap:anywhere;min-height:220px;max-height:500px;overflow:auto;font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}.placeholder{color:var(--muted);font-size:14px;padding:20px 0}.foot{max-width:1120px;margin:0 auto;padding:0 22px 25px;color:var(--muted);font-size:12px}.note{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px;margin-top:15px;font-size:12px;color:#1e40af}.loading{display:none;color:var(--muted);font-size:13px;margin-top:10px}
+    @media(max-width:800px){main{grid-template-columns:1fr;padding:14px}.card{padding:17px}header{padding:25px 17px 30px}.fields{grid-template-columns:1fr}.field.full,.section-label{grid-column:auto}.foot{padding:0 17px 22px}}
+  </style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">Informa.BR · Governo eletrônico</div><h1>Simulador de Recursos da LAI</h1><p>Explore o padrão GoF <strong>Chain of Responsibility</strong>: configure um recurso e observe os handlers reais decidirem se tratam ou encaminham a solicitação.</p></div></header>
+<main>
+  <section class="card">
+    <h2>Configurar recurso</h2><p class="sub">Preencha os dados e simule a resposta de cada instância. Os campos de decisão representam o cenário de teste.</p>
+    <form id="form">
+      <div class="fields">
+        <div class="field"><label for="protocolo">Protocolo</label><input id="protocolo" name="protocolo" type="text" value="REC-0099" required maxlength="80"></div>
+        <div class="field"><label for="cidadao">Nome do cidadão</label><input id="cidadao" name="cidadao" type="text" value="Cidadão de Teste" required maxlength="120"></div>
+        <label class="toggle"><input type="checkbox" name="tempestivo" checked><span>Recurso dentro do prazo legal de 10 dias (tempestivo)</span></label>
+        <label class="toggle"><input type="checkbox" name="executivoFederal" checked><span>Órgão integrante do Poder Executivo Federal</span></label>
+        <div class="section-label">Decisões simuladas por instância</div>
+        <div class="field full"><label for="decisao1">1ª instância · Autoridade hierárquica superior</label><select id="decisao1" name="decisao1"><option value="encaminhar">Manter a negativa e encaminhar</option><option value="deferir">Deferir o recurso</option></select></div>
+        <div class="field full"><label for="decisao2">2ª instância · Autoridade máxima do órgão</label><select id="decisao2" name="decisao2"><option value="encaminhar">Manter a negativa e encaminhar</option><option value="deferir">Deferir o recurso</option></select></div>
+        <div class="field full"><label for="decisaoCGU">3ª instância · CGU</label><select id="decisaoCGU" name="decisaoCGU"><option value="encaminhar">Manter a negativa e encaminhar</option><option value="deferir">Deferir o recurso</option></select></div>
+        <div class="field full"><label for="decisaoCMRI">4ª instância · CMRI</label><select id="decisaoCMRI" name="decisaoCMRI"><option value="indeferir">Indeferir e encerrar a via recursal</option><option value="deferir">Deferir o recurso</option></select></div>
+      </div>
+      <div class="actions"><button class="primary" id="submit" type="submit">▶ Processar recurso</button><button class="secondary" id="reset" type="reset">Restaurar valores</button></div>
+      <div class="loading" id="loading">Processando pela cadeia de handlers Java…</div>
+    </form>
+    <div class="note"><strong>Como interpretar:</strong> cada handler tenta aplicar sua regra. Se não concluir o recurso, encaminha ao próximo elo; a cadeia termina quando há uma decisão final ou quando o fluxo administrativo se esgota.</div>
+  </section>
+  <section class="card" aria-live="polite">
+    <div class="result-head"><h2>Resultado do processamento</h2><span class="pill" id="status">Aguardando execução</span></div>
+    <p class="sub">O relatório abaixo vem da execução Java, não de uma simulação feita no navegador.</p>
+    <div id="summary" class="placeholder">Configure um cenário e clique em <strong>Processar recurso</strong> para ver a cadeia percorrida.</div>
+    <pre class="log" id="log">Nenhum recurso processado ainda.</pre>
+  </section>
+</main>
+<div class="foot">Projeto acadêmico demonstrativo do padrão comportamental Chain of Responsibility · Execução local em Java.</div>
+<script>
+const form=document.getElementById('form');
+const temp=form.elements.tempestivo, executivo=form.elements.executivoFederal;
+const selects=[form.elements.decisao1,form.elements.decisao2,form.elements.decisaoCGU,form.elements.decisaoCMRI];
+function updateAvailability(){selects[0].disabled=!temp.checked;selects[1].disabled=!temp.checked;selects[2].disabled=!temp.checked||!executivo.checked;selects[3].disabled=!temp.checked;}
+temp.addEventListener('change',updateAvailability);executivo.addEventListener('change',updateAvailability);updateAvailability();
+form.addEventListener('reset',()=>setTimeout(updateAvailability,0));
+function badgeClass(status){if(status==='DEFERIDO')return 'pill success';if(status==='INTEMPESTIVO'||status==='INDEFERIDO')return 'pill danger';if(status==='NAO_CONHECIDO'||status==='ESGOTADA_VIA_RECURSAL')return 'pill warning';return 'pill';}
+form.addEventListener('submit',async e=>{
+ e.preventDefault();const button=document.getElementById('submit'),loading=document.getElementById('loading');button.disabled=true;loading.style.display='block';
+ const data=new URLSearchParams();for(const el of form.elements){if(!el.name||el.disabled)continue;if(el.type==='checkbox')data.set(el.name,String(el.checked));else data.set(el.name,el.value);}
+ // Os campos desabilitados também precisam ser enviados com seus valores selecionados.
+ for(const s of selects) data.set(s.name,s.value);
+ try{const response=await fetch('/api/processar',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});const result=await response.json();if(!response.ok)throw new Error(result.erro||'Não foi possível processar.');
+  const status=document.getElementById('status');status.textContent=result.status;status.className=badgeClass(result.status);
+  const summary=document.getElementById('summary');summary.className='summary';summary.replaceChildren();
+  for(const [label,value] of [['Status final',result.status],['Instância responsável',result.instancia||'—'],['Motivo da decisão',result.motivo||'—']]){const item=document.createElement('div');item.className='metric';if(label==='Motivo da decisão')item.style.gridColumn='1/-1';const small=document.createElement('small');small.textContent=label;const strong=document.createElement('strong');strong.textContent=value;item.append(small,strong);summary.append(item);}
+  document.getElementById('log').textContent=result.relatorio;
+ }catch(err){document.getElementById('status').textContent='Erro';document.getElementById('status').className='pill danger';document.getElementById('log').textContent='Não foi possível comunicar com o servidor Java.\n'+err.message+'\n\nConfira se o servidor continua ativo no terminal.';}
+ finally{button.disabled=false;loading.style.display='none';}
+});
+</script>
+</body>
+</html>

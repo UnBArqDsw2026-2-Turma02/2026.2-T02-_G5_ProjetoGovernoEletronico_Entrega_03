@@ -15,6 +15,7 @@
 | 24/1012329 | Luiz Henrique Pallavicini |
 | 21/1031735 | Isaac Lucas Souza Bezerra |
 | 24/1011804 | Fábio Alessandro Santos Vieira |
+| 19/0048549 | Tiago Scherrer Tavares de Lyra |
 
 ## Sobre
 

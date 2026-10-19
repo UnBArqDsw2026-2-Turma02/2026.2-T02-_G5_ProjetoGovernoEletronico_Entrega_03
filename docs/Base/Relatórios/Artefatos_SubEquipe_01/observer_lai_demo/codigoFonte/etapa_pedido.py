@@ -1,0 +1,9 @@
+from enum import Enum
+
+
+class Etapa(str, Enum):
+    REGISTRADO = "REGISTRADO"
+    EM_ANALISE = "EM_ANALISE"
+    RESPONDIDO = "RESPONDIDO"
+    AUTORIZADO = "AUTORIZADO"
+    PUBLICADO = "PUBLICADO"

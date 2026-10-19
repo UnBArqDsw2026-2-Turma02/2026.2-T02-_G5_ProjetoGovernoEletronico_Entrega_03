@@ -1,0 +1,97 @@
+@startuml
+title Diagrama de Classes UML — GoF Comportamental: Chain of Responsibility
+subtitle Recursos da LAI (Informa.BR) — núcleo do padrão
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam monochrome true
+skinparam packageStyle rectangle
+hide empty members
+
+class ChainOfResponsibilityDemo <<Client>> {
+  +main(args : String[]) : void
+}
+
+abstract class InstanciaHandler <<Handler>> {
+  -proximo : InstanciaHandler
+  +encadear(proximo : InstanciaHandler) : InstanciaHandler
+  +handle(recurso : Recurso) : void
+  #tratar(recurso : Recurso) : boolean
+  #nomeInstancia() : String
+}
+
+class ValidadorTempestividadeHandler <<ConcreteHandler>> {
+  #tratar(recurso : Recurso) : boolean
+  #nomeInstancia() : String
+}
+
+class AutoridadeHierarquicaSuperiorHandler <<ConcreteHandler>> {
+  -vaiDeferir : boolean
+  +AutoridadeHierarquicaSuperiorHandler(vaiDeferir : boolean)
+  #tratar(recurso : Recurso) : boolean
+  #nomeInstancia() : String
+}
+
+class AutoridadeMaximaOrgaoHandler <<ConcreteHandler>> {
+  -vaiDeferir : boolean
+  +AutoridadeMaximaOrgaoHandler(vaiDeferir : boolean)
+  #tratar(recurso : Recurso) : boolean
+  #nomeInstancia() : String
+}
+
+class CGUHandler <<ConcreteHandler>> {
+  -vaiDeferir : boolean
+  +CGUHandler(vaiDeferir : boolean)
+  #tratar(recurso : Recurso) : boolean
+  #nomeInstancia() : String
+}
+
+class CMRIHandler <<ConcreteHandler>> {
+  -vaiDeferir : boolean
+  +CMRIHandler(vaiDeferir : boolean)
+  #tratar(recurso : Recurso) : boolean
+  #nomeInstancia() : String
+}
+
+class Recurso <<Request>> {
+  -protocolo : String
+  -cidadao : String
+  -tempestivo : boolean
+  -orgaoDoPoderExecutivoFederal : boolean
+  -status : Status
+  -instanciaResponsavelPelaDecisao : String
+  -motivoDaDecisao : String
+  +Recurso(protocolo : String, cidadao : String, tempestivo : boolean, orgaoDoPoderExecutivoFederal : boolean)
+  +getProtocolo() : String
+  +getCidadao() : String
+  +isTempestivo() : boolean
+  +isOrgaoDoPoderExecutivoFederal() : boolean
+  +getStatus() : Status
+  +isDecidido() : boolean
+  +decidir(status : Status, instancia : String, motivo : String) : void
+}
+
+enum Status <<enumeration>> {
+  AGUARDANDO_ANALISE
+  INTEMPESTIVO
+  DEFERIDO
+  INDEFERIDO
+  NAO_CONHECIDO
+  ESGOTADA_VIA_RECURSAL
+}
+
+InstanciaHandler <|-- ValidadorTempestividadeHandler
+InstanciaHandler <|-- AutoridadeHierarquicaSuperiorHandler
+InstanciaHandler <|-- AutoridadeMaximaOrgaoHandler
+InstanciaHandler <|-- CGUHandler
+InstanciaHandler <|-- CMRIHandler
+InstanciaHandler "0..1" --> "0..1" InstanciaHandler : proximo
+ChainOfResponsibilityDemo ..> InstanciaHandler : <<use>> / compõe cadeia
+ChainOfResponsibilityDemo ..> Recurso : <<create>>
+InstanciaHandler ..> Recurso : <<use>>
+Recurso ..> Status : <<use>>
+
+note bottom of ChainOfResponsibilityDemo
+  A interface web e o teste manual também atuam
+  como clientes que montam e iniciam a cadeia.
+end note
+@enduml
