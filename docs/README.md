@@ -14,6 +14,7 @@
 | 23/1029270 | Pedro Henrique Martins Silva |
 | 24/1012329 | Luiz Henrique Pallavicini |
 | 21/1031735 | Isaac Lucas Souza Bezerra |
+| 19/0048549 | Tiago Scherrer Tavares de Lyra |
 
 ## Sobre
 
