@@ -1,0 +1,144 @@
+@startuml GoF_Criacional_FactoryMethod_V01
+' =============================================================
+' Projeto Informa.BR | Grupo 05 | FGA0208
+' Padrões de Projeto GoF — Criacional: FACTORY METHOD
+' Aplicado à hierarquia "Resposta" do Diagrama de Classes (Entrega 02)
+' Versão 1.0 — SubEquipe 03
+' =============================================================
+
+title GoF Criacional — Factory Method aplicado à emissão de Respostas LAI | Informa.BR | G5 | SubEquipe 03 | v1.0
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #2C3E50
+skinparam classFontStyle bold
+skinparam arrowColor #2C3E50
+skinparam noteBackgroundColor #FEF9E7
+skinparam noteBorderColor #D4AC0D
+skinparam packageBorderColor #7F8C8D
+skinparam packageFontColor #34495E
+hide circle
+hide empty members
+
+' ==========================================================
+' CLIENTE
+' ==========================================================
+package "Cliente" {
+  class "Agente Público" as AgentePublico {
+    - matricula : String
+    - cargo : String
+    + elaborarResposta(p : PedidoAcesso, f : FabricaResposta, d : DadosResposta) : Resposta
+  }
+
+  class "Pedido de Acesso" as PedidoAcesso {
+    - protocolo : String
+    - status : StatusManifestacao
+    + vincularResposta(r : Resposta) : void
+  }
+}
+
+' ==========================================================
+' CREATOR + CONCRETE CREATORS
+' ==========================================================
+package "Criadores (Creator)" {
+  abstract class "FabricaResposta" as FabricaResposta <<Creator>> {
+    + emitirResposta(p : PedidoAcesso, a : AgentePublico, d : DadosResposta) : Resposta
+    # {abstract} criarResposta(d : DadosResposta, a : AgentePublico) : Resposta
+  }
+
+  class "FabricaRespostaDeferida" as FabDef <<ConcreteCreator>> {
+    # criarResposta(d : DadosResposta, a : AgentePublico) : Resposta
+  }
+  class "FabricaRespostaParcial" as FabPar <<ConcreteCreator>> {
+    # criarResposta(d : DadosResposta, a : AgentePublico) : Resposta
+  }
+  class "FabricaRespostaIndeferida" as FabInd <<ConcreteCreator>> {
+    # criarResposta(d : DadosResposta, a : AgentePublico) : Resposta
+  }
+}
+
+' ==========================================================
+' PRODUCT + CONCRETE PRODUCTS (mesma hierarquia da Entrega 02)
+' ==========================================================
+package "Produtos (Product)" {
+  abstract class "Resposta" as Resposta <<Product>> {
+    - dataResposta : Date
+    - texto : String
+    - agenteResponsavel : String
+    + publicar() : void
+    + {abstract} cabeRecurso() : Boolean
+  }
+
+  class "Resposta Deferida" as RespDef <<ConcreteProduct>> {
+    - linkAcesso : String
+    - formatoArquivo : String
+    + disponibilizarDados() : void
+  }
+
+  class "Resposta Parcialmente Deferida" as RespPar <<ConcreteProduct>> {
+    - partesOcultadas : String
+    - justificativaRestricao : String
+    - enquadramentoLGPD : String
+    + indicarPrazoRecursal() : String
+  }
+
+  class "Resposta Indeferida" as RespInd <<ConcreteProduct>> {
+    - motivoNegativa : String
+    - dispositivoLegalLAI : String
+    + indicarAutoridadeRecursal() : String
+  }
+}
+
+' ==========================================================
+' RELACIONAMENTOS
+' ==========================================================
+FabricaResposta <|-- FabDef
+FabricaResposta <|-- FabPar
+FabricaResposta <|-- FabInd
+
+Resposta <|-- RespDef
+Resposta <|-- RespPar
+Resposta <|-- RespInd
+
+FabDef ..> RespDef : <<create>>
+FabPar ..> RespPar : <<create>>
+FabInd ..> RespInd : <<create>>
+
+FabricaResposta ..> Resposta : produz >
+AgentePublico --> FabricaResposta : usa >
+AgentePublico ..> PedidoAcesso : responde >
+PedidoAcesso "1" --> "0..1" Resposta : origina >
+
+' ==========================================================
+' NOTAS
+' ==========================================================
+note right of FabricaResposta
+  <b>Template do processo de emissão</b>
+  emitirResposta(p, a, d):
+    r = criarResposta(d, a)   // factory method
+    p.vincularResposta(r)
+    r.publicar()
+    return r
+end note
+
+note bottom of FabPar
+  Valida as regras de privacidade
+  antes de instanciar o produto:
+  partes ocultadas + base legal
+  (LAI art. 7º §2º e art. 31; LGPD).
+end note
+
+note bottom of FabInd
+  Exige o dispositivo legal da
+  negativa (LAI art. 11 §1º, II)
+  e informa o prazo recursal
+  de 10 dias (LAI art. 15).
+end note
+
+@enduml
