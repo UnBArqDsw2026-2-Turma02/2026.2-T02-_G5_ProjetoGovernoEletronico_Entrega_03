@@ -12,9 +12,9 @@ const ORGAOS = [
 const PROTOCOLO = '00075.004218/2026-31';
 
 const fieldBase =
-  'w-full rounded-md border px-3.5 py-2.5 text-base transition focus:outline-none focus-visible:ring-4 focus-visible:ring-gov-blue/25';
-const fieldEnabled = 'border-gov-muted bg-white text-gov-ink hover:border-gov-blue focus:border-gov-blue';
-const fieldLocked = 'cursor-not-allowed border-gov-line bg-slate-100 text-gov-muted opacity-80';
+  'w-full rounded-md border px-3.5 py-2.5 text-base transition focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-600/25';
+const fieldEnabled = 'border-slate-400 bg-white text-slate-900 hover:border-blue-600 focus:border-blue-600';
+const fieldLocked = 'cursor-not-allowed border-slate-300 bg-slate-100 text-slate-500 opacity-80';
 
 export default function PedidoDetalhes() {
   // 1. INICIANDO OS BASTIDORES (O Motor GoF State)
@@ -52,7 +52,7 @@ export default function PedidoDetalhes() {
     setFaseAtual(pedido.getStatus());
   };
 
-  // Atalho oculto apenas para demonstração (simula o órgão respondendo)
+  // Atalho oculto apenas para demonstração
   const simularRespostaGoverno = () => {
     pedido.setEstado(new RespondidoState());
     setFaseAtual(pedido.getStatus());
@@ -72,14 +72,14 @@ export default function PedidoDetalhes() {
       {/* Cabeçalho do protocolo */}
       <header className="mb-6 flex justify-between items-center">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-gov-blue text-blue-600">
+          <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
             Lei de Acesso à Informação · Pedido
           </p>
-          <h1 id="pedido-titulo" className="mt-1 font-serif text-3xl font-bold text-gov-ink text-slate-800">
+          <h1 id="pedido-titulo" className="mt-1 font-serif text-3xl font-bold text-slate-800">
             {isDraft ? 'Novo pedido de informação' : `Protocolo ${PROTOCOLO}`}
           </h1>
         </div>
-        {/* Botão de Demonstração (Para mostrar o estado final na apresentação) */}
+        {/* Botão de Demonstração */}
         {isAnalysis && (
           <button onClick={simularRespostaGoverno} className="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 py-1 px-3 rounded">
             Simular Resposta (Demo)
@@ -154,6 +154,75 @@ export default function PedidoDetalhes() {
               className={`${fieldBase} resize-y ${locked ? fieldLocked : fieldEnabled}`}
             />
           </div>
+
+          {/* ÁREA DE ANEXOS RESTAURADA */}
+          {isDraft && (
+            <div>
+              <span className="mb-1.5 block text-sm font-semibold">Anexos</span>
+              <label
+                htmlFor="anexos"
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  setDragging(true);
+                }}
+                onDragLeave={() => setDragging(false)}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  setDragging(false);
+                  addFiles(e.dataTransfer.files);
+                }}
+                className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed px-6 py-10 text-center transition focus-within:ring-4 focus-within:ring-blue-600/25 ${
+                  dragging
+                    ? 'border-blue-600 bg-blue-50'
+                    : 'border-slate-400 bg-slate-50 hover:border-blue-600 hover:bg-blue-50'
+                }`}
+              >
+                <svg
+                  aria-hidden
+                  viewBox="0 0 24 24"
+                  className="h-8 w-8 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 16V4m0 0L7 9m5-5 5 5" />
+                  <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" />
+                </svg>
+                <span className="font-semibold text-slate-800">
+                  Arraste arquivos aqui ou <span className="text-blue-600 underline">selecione</span>
+                </span>
+                <span className="text-sm text-slate-500">PDF, DOCX, JPG ou PNG · até 10 MB cada</span>
+                <input
+                  id="anexos"
+                  type="file"
+                  multiple
+                  className="sr-only"
+                  onChange={(e) => addFiles(e.target.files)}
+                />
+              </label>
+              {arquivos.length > 0 && (
+                <ul className="mt-3 space-y-1.5 text-sm">
+                  {arquivos.map((nome, i) => (
+                    <li
+                      key={`${nome}-${i}`}
+                      className="flex items-center justify-between rounded-md border border-slate-200 px-3 py-2"
+                    >
+                      <span className="truncate text-slate-700">{nome}</span>
+                      <button
+                        type="button"
+                        onClick={() => setArquivos((p) => p.filter((_, idx) => idx !== i))}
+                        className="ml-3 font-semibold text-blue-600 hover:underline"
+                      >
+                        Remover
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Rodapé de ação */}
