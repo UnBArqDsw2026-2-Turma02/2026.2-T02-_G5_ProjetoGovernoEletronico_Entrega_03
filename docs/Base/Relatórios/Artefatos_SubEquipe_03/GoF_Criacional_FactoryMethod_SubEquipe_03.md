@@ -82,15 +82,15 @@ O cenário mostra uma resposta **parcialmente deferida**. A fábrica impede a cr
 
 ## Implementação
 
-O código fica em [`codigo/subequipe-03/`](../../../../codigo/subequipe-03/). Para executar:
+O código fica em [`codigo/`](codigo/). Para executar:
 
 ```bash
-cd codigo/subequipe-03
+cd codigo
 npm install
 npm start
 ```
 
-**Trecho central: o Creator e uma fábrica concreta** (`codigo/subequipe-03/src/fabricas.ts`):
+**Trecho central: o Creator e uma fábrica concreta** (`codigo/src/fabricas.ts`):
 
 ```ts
 export abstract class FabricaResposta {
@@ -118,7 +118,7 @@ export class FabricaRespostaParcial extends FabricaResposta {
 }
 ```
 
-**Cliente: não conhece nenhuma subclasse concreta** (`codigo/subequipe-03/src/dominio.ts`):
+**Cliente: não conhece nenhuma subclasse concreta** (`codigo/src/dominio.ts`):
 
 ```ts
 elaborarResposta(pedido: PedidoAcesso, fabrica: FabricaResposta, dados: DadosResposta): Resposta {

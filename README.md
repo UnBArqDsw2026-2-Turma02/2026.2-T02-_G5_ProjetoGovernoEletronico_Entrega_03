@@ -57,7 +57,7 @@ O padrão foi aplicado à hierarquia `Resposta` do Diagrama de Classes da Entreg
 **Ficha Técnica — Factory Method:**
 * **Autores:** SubEquipe 03 — Isaac Lucas, André João, Rivadalvio Joaquim e João Paulo Barros.
 * **Fontes editáveis (PlantUML):** [Diagrama de Classes](docs/Base/Relatórios/Artefatos_SubEquipe_03/GoF_Criacional_FactoryMethod_V01.puml) · [Diagrama de Sequência](docs/Base/Relatórios/Artefatos_SubEquipe_03/GoF_Criacional_FactoryMethod_Sequencia_V01.puml)
-* **Código:** [`codigo/subequipe-03/`](codigo/subequipe-03/) (TypeScript)
+* **Código:** [`docs/Base/Relatórios/Artefatos_SubEquipe_03/codigo/`](docs/Base/Relatórios/Artefatos_SubEquipe_03/codigo/) (TypeScript)
 
 ---
 
@@ -70,7 +70,7 @@ O padrão foi aplicado à hierarquia `Resposta` do Diagrama de Classes da Entreg
 Os padrões têm implementação executável. Para rodar a demonstração do **Factory Method** (SubEquipe 03), é preciso ter o **Node.js 18 ou superior**:
 
 ```bash
-cd codigo/subequipe-03
+cd docs/Base/Relatórios/Artefatos_SubEquipe_03/codigo
 npm install
 npm start
 ```
