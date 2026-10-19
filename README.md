@@ -13,7 +13,7 @@ A documentação do projeto está disponível no [GitPages](https://unbarqdsw202
 | Matrícula | Aluno |
 | --- | --- |
 | 211031735 | Isaac Lucas Souza Bezerra |
-| | André João Cordeiro Gomes |
+| 211061402| André João Cordeiro Gomes |
 | | Rivadalvio Joaquim da Silva Filho |
 | 202023805 | João Paulo Barros |
 
