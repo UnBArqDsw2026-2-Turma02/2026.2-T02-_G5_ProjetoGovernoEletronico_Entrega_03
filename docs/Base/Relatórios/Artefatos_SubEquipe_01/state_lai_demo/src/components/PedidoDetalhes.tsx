@@ -21,13 +21,17 @@ export default function PedidoDetalhes() {
   const [pedido] = useState(() => new PedidoContext(new RascunhoState()));
   const [faseAtual, setFaseAtual] = useState(pedido.getStatus());
 
-  // 2. ESTADOS VISUAIS DA TELA
+  // 2. ESTADOS VISUAIS DA TELA (O Palco)
   const [orgao, setOrgao] = useState(ORGAOS[1]);
   const [descricao, setDescricao] = useState(
     'Solicito a relação de contratos firmados para aquisição de insumos hospitalares entre janeiro de 2024 e dezembro de 2025, com valores, fornecedores e datas de vigência.',
   );
   const [arquivos, setArquivos] = useState<string[]>([]);
   const [dragging, setDragging] = useState(false);
+  
+  // Novo estado visual para o Recurso
+  const [recursoTexto, setRecursoTexto] = useState('');
+  const [escrevendoRecurso, setEscrevendoRecurso] = useState(false);
 
   // 3. REGRAS DE EXIBIÇÃO BASEADAS NO MOTOR
   const isDraft = faseAtual === 'draft';
@@ -39,20 +43,33 @@ export default function PedidoDetalhes() {
   const handleEnviar = (e: React.FormEvent) => {
     e.preventDefault();
     pedido.enviar(); // Motor valida a transição para Em Análise
-    setFaseAtual(pedido.getStatus()); // Tela se atualiza automaticamente
+    setFaseAtual(pedido.getStatus()); 
   };
 
   const handleCancelar = () => {
-    pedido.cancelar(); // Executa o cancelamento dentro da classe de estado
+    pedido.cancelar();
     alert("Protocolo cancelado pelo cidadão.");
   };
 
   const handleRecorrer = () => {
-    pedido.recorrer(); // Motor valida o recurso e volta para Análise
+    // Se o cidadão ainda não escreveu, abre a caixa de texto no Palco
+    if (!escrevendoRecurso) {
+      setEscrevendoRecurso(true);
+      return;
+    }
+
+    // Se a caixa está aberta mas vazia, exige o preenchimento
+    if (recursoTexto.trim() === '') {
+      alert("Por favor, digite a justificativa do seu recurso antes de enviar.");
+      return;
+    }
+
+    // Confirmação final: Aciona os Bastidores
+    pedido.recorrer(); // Motor valida o recurso e volta o status para Análise
     setFaseAtual(pedido.getStatus());
+    setEscrevendoRecurso(false); // Limpa o palco
   };
 
-  // Atalho oculto apenas para demonstração
   const simularRespostaGoverno = () => {
     pedido.setEstado(new RespondidoState());
     setFaseAtual(pedido.getStatus());
@@ -69,7 +86,6 @@ export default function PedidoDetalhes() {
       aria-labelledby="pedido-titulo"
       data-state={faseAtual}
     >
-      {/* Cabeçalho do protocolo */}
       <header className="mb-6 flex justify-between items-center">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
@@ -79,7 +95,6 @@ export default function PedidoDetalhes() {
             {isDraft ? 'Novo pedido de informação' : `Protocolo ${PROTOCOLO}`}
           </h1>
         </div>
-        {/* Botão de Demonstração */}
         {isAnalysis && (
           <button onClick={simularRespostaGoverno} className="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 py-1 px-3 rounded">
             Simular Resposta (Demo)
@@ -87,7 +102,6 @@ export default function PedidoDetalhes() {
         )}
       </header>
 
-      {/* Banner de status: Em Análise */}
       {isAnalysis && (
         <section
           role="status"
@@ -108,7 +122,6 @@ export default function PedidoDetalhes() {
         </section>
       )}
 
-      {/* Banner de status: Respondido */}
       {isAnswered && (
         <section
           role="status"
@@ -118,7 +131,6 @@ export default function PedidoDetalhes() {
         </section>
       )}
 
-      {/* Formulário */}
       <form
         onSubmit={handleEnviar}
         className="rounded-lg border border-slate-200 bg-white shadow-sm"
@@ -155,7 +167,6 @@ export default function PedidoDetalhes() {
             />
           </div>
 
-          {/* ÁREA DE ANEXOS RESTAURADA */}
           {isDraft && (
             <div>
               <span className="mb-1.5 block text-sm font-semibold">Anexos</span>
@@ -223,10 +234,27 @@ export default function PedidoDetalhes() {
               )}
             </div>
           )}
+
+          {/* CAIXA DE TEXTO DO RECURSO (Revelada ao clicar em Entrar com Recurso) */}
+          {escrevendoRecurso && (
+            <div className="mt-6 border-t border-slate-200 pt-6">
+              <label htmlFor="recurso" className="mb-1.5 block text-sm font-semibold text-blue-600">
+                Justificativa do Recurso (Nova Instância)
+              </label>
+              <textarea
+                id="recurso"
+                rows={5}
+                value={recursoTexto}
+                onChange={(e) => setRecursoTexto(e.target.value)}
+                placeholder="Explique por que a resposta do órgão não atendeu à sua solicitação e o que ainda falta ser respondido..."
+                className={`${fieldBase} resize-y ${fieldEnabled} border-blue-300 focus:border-blue-600`}
+              />
+            </div>
+          )}
         </div>
 
         {/* Rodapé de ação */}
-        <footer className="flex justify-end border-t border-slate-200 bg-slate-50 px-6 py-4 sm:px-8">
+        <footer className="flex justify-end gap-3 border-t border-slate-200 bg-slate-50 px-6 py-4 sm:px-8">
           {isDraft && (
             <button
               type="submit"
@@ -245,18 +273,28 @@ export default function PedidoDetalhes() {
             </button>
           )}
           {isAnswered && (
-            <button
-              type="button"
-              onClick={handleRecorrer}
-              className="rounded-full bg-blue-600 px-8 py-2.5 font-semibold text-white transition hover:bg-blue-700"
-            >
-              Entrar com Recurso
-            </button>
+            <>
+              {escrevendoRecurso && (
+                <button
+                  type="button"
+                  onClick={() => setEscrevendoRecurso(false)}
+                  className="rounded-full border-2 border-slate-300 bg-white px-8 py-2 font-semibold text-slate-600 transition hover:bg-slate-50"
+                >
+                  Cancelar Recurso
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={handleRecorrer}
+                className="rounded-full bg-blue-600 px-8 py-2.5 font-semibold text-white transition hover:bg-blue-700"
+              >
+                {escrevendoRecurso ? 'Confirmar e Enviar Recurso' : 'Entrar com Recurso'}
+              </button>
+            </>
           )}
         </footer>
       </form>
 
-      {/* Card de leitura: resposta do órgão */}
       {isAnswered && (
         <section className="mt-6 rounded-lg border border-slate-200 border-t-4 border-t-blue-600 bg-white p-6 shadow-sm sm:p-8">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
